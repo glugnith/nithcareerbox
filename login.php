@@ -193,7 +193,7 @@ footer a, footer a:link {
       <span class="state">Log in</span>
     </button>
   </form>
-  <footer><a target="blank" href="http://negiajay.esy.es">negiajay.esy.es</a></footer>
+  <footer><a target="blank" href="http://nith.ac.in">Nit Website</a></footer>
   </p>
 </div>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
