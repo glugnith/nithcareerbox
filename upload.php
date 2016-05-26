@@ -69,7 +69,7 @@
 
 		}
 	?>
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>View CV</title>
