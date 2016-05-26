@@ -47,6 +47,7 @@ if (!$con)
 		//if successful.............
 		else
 		{
+			//$a = htmlspecialchars($regfullname);
 			mysqli_query($con,"insert into user values($regusername, '$regfullname', '$regemail','$regpwd1', null)");
 			$success = "registration successful, login to proceed.";
 			$_SESSION['MESSAGE'] = $success;
