@@ -1,0 +1,36 @@
+.{
+	margin:0px;
+	padding:0px;
+
+}
+body{
+	width:100%;	
+	background:#3da1ff;
+}
+.flex-container{
+	 display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 200px;
+    background-color: lightgrey;
+    margin:200px 500px ;
+    border:2px solid #696969;
+     
+
+}
+.flex-item1{
+	display: inline-block;
+}
+.flex-item3{
+	margin-top: 15px;
+}
+#upload{
+	text-align: center;
+
+}
+.navigation-bar{
+	background:#E6E6FA;
+}

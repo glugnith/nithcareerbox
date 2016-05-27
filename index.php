@@ -22,6 +22,7 @@
 	<title>Nith CareerBox</title>
 	<link rel="stylesheet" href="checkfile.css" type="text/css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="upload.css" type="text/css">
 
 </head>
 <body>
@@ -34,22 +35,28 @@
     </div>
   </div>
 </nav> -->
+	<div class="navigation-bar">
 	<ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="#"><?php echo $_SESSION['user'];?></a></li>
   <li role="presentation"><a href="#">Profile</a></li>
   <li role="presentation"><a href="logout.php">Logout</a></li>
 </ul>
-	<h1>Upload your file here</h1>
+	</div>
+<div class="flex-container">
+	<h1 id="upload">Upload your file here</h1>
 	<form action="upload.php" method="post" enctype="multipart/form-data">
+		<div class="flex-item1">
 		<input type="file" name="myfile">
+		</div>
+		<div class="flex-item1">
 		<input type="submit" name="upload" value="upload">
-		
+		</div>
 	</form>
 	<form action="view.php" method="post" >
-		
+		<div class="flex-item3">
 		<button type="submit" class="btn btn-warning" name="view_cv">View CV</button>
-
+		</div>
 	</form>
-
+</div>
 </body>
 </html>
