@@ -62,21 +62,24 @@
 	<title>Admin panel</title>
 	<link rel="stylesheet" href="checkfile.css" type="text/css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
 <!-- Form-->
+<div class="admin">
+<div class="image"></div>
 <form class="form-inline" action="admin.php" method="post">
   <div class="form-group">
     <label for="exampleInputName2">Admin</label>
     <input type="text" class="form-control" id="exampleInputName2" placeholder="Name" name="admin_usr">
   </div>
-  <div class="form-group">
+  <div class="form-group2">
     <label for="exampleInputEmail2">Key</label>
-    <input type="password" class="form-control" id="exampleInputEmail2" placeholder="passoword" name="admin_pass">
+    <div class="first"><input type="password" class="form-control" id="exampleInputEmail2" placeholder="passoword" name="admin_pass" >
   </div>
-  <button type="submit" class="btn btn-default" name="admin_login">Log In</button>
+  <div class="second"><button type="" class="btn btn-default" name="admin_login">Log In</button></div>
 </form>
-
+</div>
 </body>
 </html>

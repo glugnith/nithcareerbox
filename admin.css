@@ -1,0 +1,45 @@
+.{
+	margin:0px;
+	padding:0px;
+
+}
+body{
+	background:  #A9A9A9 ;
+	width:100%;	
+					
+}
+.image{
+background-image: url("admin.jpeg");
+	background-repeat: no-repeat;
+	height: 155px;
+	width: 355px;
+}
+.admin{
+	-webkit-display:flex;
+	display:flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	width:351px;
+	height:350px;
+	background-color: #696969;
+	margin:200px 500px ;
+
+}
+.form-group{
+	margin-top: 15px;
+	margin-left: 5px;
+}
+.form-group2{
+	margin-top: 15px;
+	margin-left: 5px;
+}
+.first{
+	margin-left: 18px;
+	display: inline;
+}
+
+.second{
+	margin-top: 15px;
+	margin-left: 48px;
+}
