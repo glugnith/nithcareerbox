@@ -18,12 +18,18 @@ if (!$con)
 		$result = mysqli_query($con,"SELECT * FROM user WHERE username = '$username' AND password = '$password'");
 		//validate
 		//checking if database retuns any rows
+		$out = mysqli_fetch_array($result);
+		$active = $out['active'];
+		$count = 0;
 		$count = mysqli_num_rows($result);
-		if($count > 0)
+		
+		if($count > 0 && $active == 1)
 		{
 			$_SESSION['user'] = $username;
 			header("Location: index.php");
 		}
+		else if( $count > 0 && $active == 0 )
+			$wrongpwd = "Ask the admin to activate your account manually.";
 		else
 			$wrongpwd = "Wrong Username or password";
 	} 
@@ -31,7 +37,6 @@ if (!$con)
 	if (isset($_POST['registerform']))
 	{
 	   // registration related check
-		echo "Registering ";
 		$regusername = $_POST['regusername'];
 		$regfullname = $_POST['regfullname'];
 		$regemail = $_POST['regemail'];
@@ -48,10 +53,10 @@ if (!$con)
 		else
 		{
 			//$a = htmlspecialchars($regfullname);
-			mysqli_query($con,"insert into user values($regusername, '$regfullname', '$regemail','$regpwd1', null)");
-			$success = "registration successful, login to proceed.";
+			
+			mysqli_query($con,"insert into user values($regusername, '$regfullname', '$regemail','$regpwd1', null ,0)");
+			$success = "Registration successful";
 			$_SESSION['MESSAGE'] = $success;
-			header("Location: login.php");
 		}
 		
   
@@ -80,12 +85,15 @@ if (!$con)
 
 <!-- Log in button -->
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginForm">
+<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#loginForm">
 	LogIN
 </button>
 </form>
-<h6 style="color:red"><?php echo $unmatchedpass ?></h6>
-<h5 style="color:red"><?php echo $wrongpwd ?></h5>
+</div>
+<div style="text-align: center; color: green; ">
+	<h6 style="font-size: 20px; color: green;"><?php if(isset($_POST['registerform']))echo $sucess; ?></h6>
+	<h6 style="font-size: 20px; color: red;"><?php if(isset($_POST['registerform']))echo $unmatchedpass; ?></h6>
+	<h5 style="font-size: 20px; color: red;"><?php if(isset($_POST['loginform']))echo $wrongpwd; ?></h5>
 </div>
 <!--Pop up sign Up form -->
 <div class="modal fade" id="signupForm">
@@ -187,6 +195,12 @@ if (!$con)
 <!-- Latest compiled and minified JavaScript -->
 	<script src="js/bootstrap.min.js">
 	</script>
+	<script type="text/javascript">
+			function messages(a){
+				 if(a == 1)
+				 	alert("Registration successful");
+			}
 
+		</script>
 </body>
 </html>

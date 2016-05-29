@@ -1,5 +1,5 @@
 <?php
-	include("config-admin.php");
+	include("config.php");
 	session_start();
 		/*try
 		{
