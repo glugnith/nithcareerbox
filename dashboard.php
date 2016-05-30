@@ -16,7 +16,7 @@
 	  	else
 	  	{
 	  		$result = mysqli_query($con,"SELECT * FROM user");
-	  		$student_info = mysqli_fetch_array($result);
+
 	  		/*if($result->num_rows > 0)
 	  		{
 	  			while($row = $result->fetch_assoc())
@@ -83,7 +83,8 @@
       		
 		    <?php
 		    	$i=0;
-		      	while($out=mysqli_fetch_array($result))
+
+		      	while($out=mysqli_fetch_array($result)) 
 		      	{
 					        $i++;
 					        $rollno =$out['username'];
