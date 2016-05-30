@@ -1,0 +1,15 @@
+CREATE database nithcareerbox;
+use nithcareerbox;
+create table user(username int(11) primary key,name varchar(20) not null, email varchar(30) not null, password varchar(50) not null, cv varchar(100), active int(1) default 0 not null);
+desc user;
+
+insert into user values(13517, "Ajay Negi", "ricchog@gmail.com", 'no', null, 0 );
+select * from user;
+
+
+CREATE TABLE tbl_admin(username varchar(20) primary key, password varchar(20) not null);
+
+desc tbl_admin;
+insert into tbl_admin values('ajay','no');
+select * from tbl_admin;
+
