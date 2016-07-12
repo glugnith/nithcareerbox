@@ -13,7 +13,8 @@ if (!$con)
    	// login related check
 		//get value
 		$username = $_POST['username'];
-		$password = $_POST['password'];
+		$regpwd2 = $_POST['password'];
+		$password = md5($regpwd2);
 		//fetching data from database
 		$result = mysqli_query($con,"SELECT * FROM user WHERE username = '$username' AND password = '$password'");
 		//validate
@@ -29,9 +30,9 @@ if (!$con)
 			header("Location: index.php");
 		}
 		else if( $count > 0 && $active == 0 )
-			$wrongpwd = "Ask the admin to activate your account manually.";
+			$wrongpwd = "Ask admin to activate your account.";
 		else
-			$wrongpwd = "Wrong Username or password";
+			$wrongpwd = "Either username or password is wrong.";
 	} 
 	//registration form section..................
 	if (isset($_POST['registerform']))
@@ -39,9 +40,9 @@ if (!$con)
 	   // registration related check
 		$regusername = $_POST['regusername'];
 		$regfullname = $_POST['regfullname'];
-		$regemail = $_POST['regemail'];
-		$regpwd1 = $_POST['regpwd1'];
-		$regpwd2 = $_POST['regpwd2'];
+		$regemail    = $_POST['regemail'];
+		$regpwd1     = $_POST['regpwd1'];
+		$regpwd2     = $_POST['regpwd2'];
 
 		//comparing both passwords........
 		//if passoword do not match show error
@@ -53,7 +54,7 @@ if (!$con)
 		else
 		{
 			//$a = htmlspecialchars($regfullname);
-			
+			$regpwd1 = md5($regpwd2);
 			mysqli_query($con,"insert into user values($regusername, '$regfullname', '$regemail','$regpwd1', null ,0)");
 			$success = "Registration successful";
 			$_SESSION['MESSAGE'] = $success;
@@ -91,9 +92,10 @@ if (!$con)
 </form>
 </div>
 <div style="text-align: center; color: green; ">
-	<h6 style="font-size: 20px; color: green;"><?php if(isset($_POST['registerform']))echo $sucess; ?></h6>
-	<h6 style="font-size: 20px; color: red;"><?php if(isset($_POST['registerform']))echo $unmatchedpass; ?></h6>
-	<h5 style="font-size: 20px; color: red;"><?php if(isset($_POST['loginform']))echo $wrongpwd; ?></h5>
+	<h6 style="font-size: 20px; color: green;"><?php if(isset($_POST['registerform']))if(isset($sucess)) echo $sucess; ?></h6>
+	<h6 style="font-size: 20px; color: red;"><?php if(isset($_POST['registerform'])) if(isset($unmatchedpass)) echo $unmatchedpass; ?></h6>
+	<h6 style="font-size: 20px; color: red;"><?php if(isset($_POST['loginform'])) if(isset($wrongpwd)) echo $wrongpwd; ?></h6>
+
 </div>
 <!--Pop up sign Up form -->
 <div class="modal fade" id="signupForm">
@@ -180,7 +182,7 @@ if (!$con)
 					</div>
 					<div class="form-group">
 						<div class="col-md-2 col-md-offset-8">
-							<input type="submit" class="btn btn-success" name="loginform" value="Log In">
+							<input type="submit" class="btn btn-success" name="loginform" value="Log In" >
 						</div>
 					</div>
 				</form>
@@ -193,14 +195,6 @@ if (!$con)
 <!-- javascript files    -->
 	<script src="js/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-	<script src="js/bootstrap.min.js">
-	</script>
-	<script type="text/javascript">
-			function messages(a){
-				 if(a == 1)
-				 	alert("Registration successful");
-			}
-
-		</script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

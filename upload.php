@@ -2,10 +2,6 @@
 		session_start();
 		include("config.php");
 		
-		/*$old_cv = 'dollar.txt';
-		$set = 
-		echo $set;*/
-
 		//dummy username
 		$username = $_SESSION['user'];
 		if(isset($_FILES['myfile'])){
@@ -28,8 +24,14 @@
 				if ($file_error === 0)
 				{
 					# code...
+					$query ="SELECT name FROM user where username = $username";
+					$result = mysqli_query($con,$query);
+					$data = mysqli_fetch_array($result);
+					$student = $data['name'];
+					$student = preg_replace('/\s+/', '_', $student);
 					if($file_size <= 2097152){
-						$file_name_new = uniqid("$username"."_",false).'.'.$file_ext;
+						/*$file_name_new = uniqid("$username"."_",false).'.'.$file_ext;*/
+						$file_name_new = "$student"."_"."$username".".".$file_ext;
 						$file_destination = 'upload/'.$file_name_new;
 						if(move_uploaded_file($file_tmp, $file_destination))
 						{
@@ -55,12 +57,13 @@
 				$query ="SELECT cv FROM user where username = $username";
 				$result = mysqli_query($con,$query);
 				$old_cv = mysqli_fetch_array($result);
+
 				//echo "old cv name ".$old_cv['cv']." ";
-				if(unlink($old_cv['cv']))
+				/*if(!empty($old_cv['cv']))*/
+				/*if(unlink($old_cv['cv']))
 				{
 
-					//echo "old cv deleted ";
-				}
+				}*/
 				$query = "UPDATE user SET cv = '$file_destination' where username = '$username'";
 				mysqli_query($con,$query);
 				//echo "path to cv ".$path_to_cv;

@@ -14,7 +14,9 @@
 			$result = mysqli_query($con,"SELECT cv FROM user WHERE username = $username");
 			$cv_path = mysqli_fetch_array($result);
 			$vPath = $cv_path['cv'];
-			
+			if(empty($vPath)) {
+				header("Location:index.php?error=1");
+			}
 		}
 	}
 ?>
@@ -25,7 +27,7 @@
 	<title>View CV</title>
 </head>
 <body style="margin:0px;">
-
+		
 		<iframe src="<?php echo $vPath;?>" style="width:100%; height:700px; padding:0px margin:0px" frameborder="0"></iframe>
 </body>
 </html>
