@@ -5,7 +5,11 @@
 		//dummy username
 		$username = $_SESSION['user'];
 		if(isset($_FILES['myfile'])){
+
 			$file = $_FILES['myfile'];
+			if(empty($file['name'])) {
+				header("Location:index.php?error=2");
+			}
 			define ('SITE_ROOT', realpath(dirname(__FILE__)));
 			//File properties
 			$file_name = $file['name'];

@@ -57,7 +57,8 @@
 		<button type="submit" class="btn btn-warning" name="view_cv">View CV</button>
 		</div>
 	</form>
-	<p><?php if(isset($_GET['error'])) if($_GET['error'] == 1 ) echo "* No CV uploaded yet."; ?></p>
+	<p><?php if(isset($_GET['error'])) if($_GET['error'] == 1 ) echo "* No CV uploaded yet.";
+		else if($_GET['error'] == 2 ) echo "* no file selected"; ?></p>
 </div>
 
 </body>
