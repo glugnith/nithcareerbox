@@ -82,6 +82,7 @@
 			        <th style="text-align:center;">Name</th>
 			        <th style="text-align:center;">Status</th>
 			        <th style="text-align:center;">CV</th>
+			        <th style="text-align:center;">Last Updated</th>
 			        <th style="text-align:center;">Action</th>
 			        <!-- <td><h1>Action</h1></td> -->
       			</tr>
@@ -96,10 +97,8 @@
 					        $name = $out['name'];
 					        $status = $out['active'];
 					        $cv_path =$out['cv'];
-					        if($out['cv']== null)
-					        {
-					        	$cv_path="N A";
-					        }
+					        $time = $out['timestamp'];
+					        
 
 					       	
 			?>
@@ -128,18 +127,21 @@
 						        		 ;?>
 						        			
 						        </td>
-					        	<td><a href="<?php echo $cv_path;?>">
-					        			<?php
+					        	<td>
+					        		<?php
 						        		if($out['cv']== null)
 								        {
-								        	//$cv_path="N A";
+								        	
 								        	echo "N A";
 								        }
 								        else
 								        {
-								        	echo "Download Cv";
+								        	echo "<a href='$cv_path'>Download Cv</a>";
 								        }
-							       	?></a>
+							       	?>
+							    </td>
+							    <td>
+							    	<?php echo $time; ?>
 							    </td>
 							    <td>
 							    	
@@ -203,7 +205,6 @@
 				count++;
 			}
 		}
-		alert(rows[0].value);
 		for(var i = 0; i < count ; i++ )
 		{
 			document.getElementById("demo").innerHTML += srows[i].value+" ";

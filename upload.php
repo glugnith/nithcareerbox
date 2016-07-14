@@ -68,7 +68,7 @@
 				{
 
 				}*/
-				$query = "UPDATE user SET cv = '$file_destination' where username = '$username'";
+				$query = "UPDATE user SET cv = '$file_destination' , timestamp = now() where username = '$username'";
 				mysqli_query($con,$query);
 				//echo "path to cv ".$path_to_cv;
 				//echo "paht to destination " .$file_destination ;

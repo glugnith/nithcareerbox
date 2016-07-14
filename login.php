@@ -72,7 +72,7 @@ if (!$con)
 			{
 				//$a = htmlspecialchars($regfullname);
 				$regpwd1 = md5($regpwd2);
-				if(mysqli_query($con,"insert into user values($regusername, '$regfullname', '$regemail','$regpwd1', null ,0)"))
+				if(mysqli_query($con,"insert into user(`username`,`name`,`email`,`password`,`cv`,`active`) values($regusername, '$regfullname', '$regemail','$regpwd1', null ,0)"))
 				$success = "Registration successful";
 				else
 					$unmatchedpass = "Roll number already registered contact admin for more info.";
