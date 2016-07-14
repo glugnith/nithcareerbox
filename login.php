@@ -49,7 +49,7 @@ if (!$con)
 	if (isset($_POST['registerform']))
 	{
 		//captcha validation
-		if(empty($_SESSION['6_letters_code'] ) || strcasecmp($_SESSION['6_letters_code'], $_POST['6_letters_code']) != 0)
+		if(empty($_SESSION['6_letters_code2'] ) || strcasecmp($_SESSION['6_letters_code2'], $_POST['6_letters_code2']) != 0)
 		{
 			$errors = "The captcha code does not match!";
 		}
@@ -72,9 +72,10 @@ if (!$con)
 			{
 				//$a = htmlspecialchars($regfullname);
 				$regpwd1 = md5($regpwd2);
-				mysqli_query($con,"insert into user values($regusername, '$regfullname', '$regemail','$regpwd1', null ,0)");
+				if(mysqli_query($con,"insert into user values($regusername, '$regfullname', '$regemail','$regpwd1', null ,0)"))
 				$success = "Registration successful";
-				$_SESSION['MESSAGE'] = $success;
+				else
+					$unmatchedpass = "Roll number already registered contact admin for more info.";
 			}
 	   	}
 	}
@@ -162,11 +163,11 @@ if (!$con)
 					<div class="form-group">
 						
 							<div class="col-md-offset-1 center">
-								<img src="captcha.php?rand=<?php echo rand(); ?>" id='captchaimg' >
+								<img src="captcha2.php?rand=<?php echo rand(); ?>" id='captchaimg' >
 							</div>
 							<label class="col-md-4 col-md-offset-1" for='message'>Enter the code above here :</label><br>
 							<div class="col-md-5">
-								<input id="6_letters_code" name="6_letters_code" type="text" class="form-control input-sm" placeholder="write code here"><small>Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh</small>
+								<input id="6_letters_code2" name="6_letters_code2" type="text" class="form-control input-sm" placeholder="write code here"><small>Can't read the image? click <a href='javascript: refreshCaptcha2();'>here</a> to refresh</small>
 							</div>
 							
 					</div>
@@ -235,6 +236,11 @@ if (!$con)
 <!-- refresh captcha code -->
 <script>
 	function refreshCaptcha()
+	{
+		var img = document.images['captchaimg'];
+		img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
+	}
+	function refreshCaptcha2()
 	{
 		var img = document.images['captchaimg'];
 		img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
