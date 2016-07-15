@@ -167,7 +167,7 @@ if (!$con)
 							</div>
 							<label class="col-md-4 col-md-offset-1" for='message'>Enter the code above here :</label><br>
 							<div class="col-md-5">
-								<input id="6_letters_code2" name="6_letters_code2" type="text" class="form-control input-sm" placeholder="write code here"><small>Can't read the image? click <a href='javascript: refreshCaptcha2();'>here</a> to refresh</small>
+								<input id="6_letters_code2" name="6_letters_code2" type="text" class="form-control input-sm" placeholder="write code here"><small>Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh</small>
 							</div>
 							
 					</div>
@@ -216,7 +216,7 @@ if (!$con)
 							</div>
 							<label class="col-md-4 col-md-offset-1" for='message'>Enter the code above here :</label><br>
 							<div class="col-md-5">
-								<input id="6_letters_code" name="6_letters_code" type="text" class="form-control input-sm" placeholder="write code here"><small>Can't read the image? click <a href='javascript: refreshCaptcha();'>here</a> to refresh</small>
+								<input id="6_letters_code" name="6_letters_code" type="text" class="form-control input-sm" placeholder="write code here"><small>Can't read the image? click <a href='javascript: refreshCaptcha2();'>here</a> to refresh</small>
 							</div>
 							
 					</div>
