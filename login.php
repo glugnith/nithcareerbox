@@ -212,7 +212,7 @@ if (!$con)
 					<div class="form-group">
 						
 							<div class="col-md-offset-1 center">
-								<img src="captcha.php?rand=<?php echo rand(); ?>" id='captchaimg' >
+								<img src="captcha.php?rand=<?php echo rand(); ?>" id='captchaimg2' >
 							</div>
 							<label class="col-md-4 col-md-offset-1" for='message'>Enter the code above here :</label><br>
 							<div class="col-md-5">
@@ -242,7 +242,7 @@ if (!$con)
 	}
 	function refreshCaptcha2()
 	{
-		var img = document.images['captchaimg'];
+		var img = document.images['captchaimg2'];
 		img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
 	}
 </script>
