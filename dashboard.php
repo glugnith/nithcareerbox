@@ -15,7 +15,7 @@
 	  	}
 	  	else
 	  	{
-	  		$result = mysqli_query($con,"SELECT * FROM user");
+	  		$result = mysqli_query($con,"SELECT * FROM user ORDER BY username ASC");
 
 	  		/*if($result->num_rows > 0)
 	  		{
@@ -213,3 +213,4 @@
 
 </script>
 </html>
+
