@@ -58,7 +58,8 @@
 		</div>
 	</form>
 	<p><?php if(isset($_GET['error'])) if($_GET['error'] == 1 ) echo "* No CV uploaded yet.";
-		else if($_GET['error'] == 2 ) echo "* no file selected"; ?></p>
+		else if($_GET['error'] == 2 ) echo "* no file selected";
+		else if($_GET['error'] == 3 ) echo "Only pdf file is allowed."; ?></p>
 </div>
 
 </body>

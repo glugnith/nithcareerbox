@@ -35,7 +35,7 @@
 	   	// login related check
 			//get value
 			$username = $_POST['admin_usr'];
-			$password = $_POST['admin_pass'];
+			$password = md5($_POST['admin_pass']);
 			//fetching data from database
 			$result = mysqli_query($con,"SELECT * FROM tbl_admin WHERE username = '$username' AND password = '$password'");
 			//validate
@@ -49,7 +49,6 @@
 			else
 			{
 				$wrongpwd = "Wrong Username or password";
-				echo "not loged in";
 			}
 		} 
 		
@@ -79,6 +78,7 @@
     <div class="first"><input type="password" class="form-control" id="exampleInputEmail2" placeholder="passoword" name="admin_pass" >
   </div>
   <div class="second"><button type="" class="btn btn-default" name="admin_login">Log In</button></div>
+  <p><?php if(isset($wrongpwd)) echo $wrongpwd; ?></p>
 </form>
 </div>
 </body>
